@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blaze OS</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/home.css" />
+    <link rel="stylesheet" href="/src/uv.css" />
+    <link rel="stylesheet" href="/src/features.css" />
+    <link rel="stylesheet" href="/src/electrolyte.css" />
+    <link rel="stylesheet" href="/src/hydration.css" />
+    <link rel="stylesheet" href="/src/reminder.css" />
+    <link rel="stylesheet" href="/src/liquid.css" />
+    <link rel="stylesheet" href="/src/goal.css" />
+    <link rel="stylesheet" href="/src/temp.css" />
+    <link rel="stylesheet" href="/src/goal.css?v=1.0.17" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="blaze-os-wrapper">
+      <div class="blaze-screen-container">
+        <!-- Boot screen -->
+        <div class="boot-screen">
+          <img
+            class="boot-logo"
+            src="https://storage.googleapis.com/msgsndr/9x3kynNfIty0hKJ7sJoI/media/68292727e5ca6c64faf334a8.svg"
+            alt="Blaze Logo"
+          />
+        </div>
+
+        <!-- Voice module screen -->
+        <div class="voice-module-screen">
+          <p class="voice-intro animated-text">
+            I’m Blaze — your AI-powered hydration companion
+          </p>
+
+          <div class="orb-container">
+            <div class="orb-glow-ring"></div>
+            <div class="orb-glow-bg"></div>
+            <div class="orb animated-orb">
+              <img
+                class="orb-icon flicker"
+                src="https://storage.googleapis.com/msgsndr/9x3kynNfIty0hKJ7sJoI/media/68318af889b532307f8d6868.svg"
+                alt="Blaze Panther"
+              />
+            </div>
+            <div class="orb-wave orb-wave1"></div>
+            <div class="orb-wave orb-wave2"></div>
+          </div>
+
+          <p class="voice-cta">Click the orb to activate Blaze</p>
+        </div>
+
+        <!-- Home screen -->
+        <div class="home-screen hidden">
+          <div class="home-screen-wrapper">
+            <div class="home-header">
+              <img
+                src="https://storage.googleapis.com/msgsndr/9x3kynNfIty0hKJ7sJoI/media/68292727e5ca6c64faf334a8.svg"
+                class="home-logo"
+                alt="Blaze Logo"
+              />
+              <p class="home-subhead">Welcome back, Blaze is monitoring.</p>
+            </div>
+
+            <div class="hydration-ring">
+              <div class="droplet-icon">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/9x3kynNfIty0hKJ7sJoI/media/68326e4ccc104c5b42e92746.svg"
+                  alt="Droplet Icon"
+                />
+              </div>
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle cx="60" cy="60" r="54" class="bg" />
+                <circle cx="60" cy="60" r="54" class="progress" />
+              </svg>
+              <div class="hydration-label">64 oz of 100 oz</div>
+            </div>
+
+            <div class="home-buttons">
+              <button class="btn blu" id="activate-liq-btn">Liquid Calories</button>
+              <button class="btn gray">Access All Features</button>
+            </div>
+
+            <div class="ai-insights-rotator">
+              <div class="ai-card visible">
+                💡 Blaze AI: You've consumed 64 oz. Aim for 12 more oz within
+                the hour.
+              </div>
+              <div class="ai-card next">
+                ⚠️ Performance Alert: Yesterday, hydration dropped 20% after
+                6PM.
+              </div>
+              <div class="ai-card">
+                📊 Hydration demand is 15% higher today — stay ahead.
+              </div>
+            </div>
+
+            <button class="ask-blaze-btn">🎙️ Ask Blaze</button>
+          </div>
+        </div>
+        <!-- 🔵 UV Sterilization Screen -->
+        <div class="uv-screen hidden">
+          <div class="uv-screen-wrapper">
+            <!-- Headline -->
+            <h2 class="uv-headline" id="uv-headline">UV Sterilization</h2>
+
+            <!-- 🔁 Pulse Wrapper -->
+            <div class="uv-pulse-wrapper" id="uv-pulse-wrapper">
+              <div class="uv-pulse-ring wave1"></div>
+              <div class="uv-pulse-ring wave2"></div>
+            </div>
+
+            <!-- 🔄 Unified SVG Container -->
+            <div class="uv-svg-container" id="uv-visual-block">
+              <img
+                src="https://storage.googleapis.com/msgsndr/9x3kynNfIty0hKJ7sJoI/media/68285279787c044c8d7cba50.svg"
+                alt="UV Animation"
+                class="uv-svg-core pulse"
+                id="uv-core-svg"
+              />
+              <div class="uv-plus-text uv-plus-shimmer" id="uv-plus-text">
+                +
+              </div>
+              <div class="uv-progress-text hidden" id="uv-progress-text">
+                0%
+              </div>
+              <div class="uv-checkmark hidden" id="uv-checkmark">+</div>
+            </div>
+
+            <p class="uv-subtext" id="uv-subtext">
+              Press to activate sterilization
+            </p>
+
+            <label class="uv-toggle">
+              <input type="checkbox" id="auto-sterilize-toggle" />
+              <span class="slider"></span>
+              Auto-Sterilization
+            </label>
+
+            <button class="btn gray" id="back-to-home-btn">Back to Home</button>
+          </div>
+        </div>
+
+        <!-- 🔒 Blaze Apps Placeholder Screen -->
+        <div class="blz-apps-screen hidden" id="blz-apps-screen">
+          <div class="blz-back-container">
+            <button
+              id="blz-back-home"
+              class="blz-back-btn"
+              title="Back to Home"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+              >
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- 🔹 Tabs for app categories -->
+          <div class="blz-tab-bar">
+            <button class="blz-tab tab-ai" data-category="ai">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="blz-icon-style"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2C13.1046 2 14 2.89543 14 4V5.5C14 6.32843 13.3284 7 12.5 7H11.5C10.6716 7 10 6.32843 10 5.5V4C10 2.89543 10.8954 2 12 2Z"
+                />
+                <path d="M12 7V22" />
+                <path d="M9 12H15" />
+                <path d="M9 16H15" />
+              </svg>
+              <span class="blz-tab-label">A.I</span>
+            </button>
+
+            <button class="blz-tab tab-core" data-category="core">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="blz-icon-style"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                <path d="M9 9h6v6H9z" />
+              </svg>
+              <span class="blz-tab-label">Core</span>
+            </button>
+
+            <button class="blz-tab tab-device" data-category="device">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="blz-icon-style"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M8 2h8v20H8z" />
+                <path d="M10 2v2h4V2" />
+                <path d="M10 22v-2h4v2" />
+              </svg>
+              <span class="blz-tab-label">Device</span>
+            </button>
+
+            <button class="blz-tab tab-soon" data-category="soon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="blz-icon-style"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="blz-tab-label">Soon</span>
+            </button>
+          </div>
+
+          <!-- 🔹 Section Title (OUTSIDE the track) -->
+          <!-- 🔁 3D Carousel Layout -->
+          <div class="blz-tab-bg ai-bg" id="blz-tab-bg"></div>
+          <div class="blz-carousel-container">
+            <div class="blz-carousel-track">
+              <!-- All AI app cards go here -->
+              <div class="blz-app-card blz-glow-gold" data-category="ai">
+                <svg
+                  class="blz-icon-styles"
+                  style="
+                    stroke: #ffcc00;
+                    filter: drop-shadow(0 0 4px rgba(255, 204, 0, 0.4));
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.5 3.5l12 12a5 5 0 01-7.07 7.07l-12-12a5 5 0 017.07-7.07z"
+                  />
+                  <path d="M14.5 9.5l-9 9" />
+                </svg>
+                <h3>Electrolyte & Supplement AI</h3>
+                <p>
+                  Personalized electrolyte / supp recs based on your weight,
+                  sport, intensity.
+                </p>
+              </div>
+
+              <div class="blz-app-card blz-glow-green" data-category="ai">
+                <svg
+                  class="blz-icon-styles"
+                  style="
+                    stroke: #00ff99;
+                    filter: drop-shadow(0 0 4px rgba(0, 255, 153, 0.4));
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="13" r="8" />
+                  <path d="M12 9v4l3 3" />
+                  <path d="M5 3l2 2" />
+                  <path d="M19 3l-2 2" />
+                </svg>
+                <h3>AI Drinking Reminder</h3>
+                <p>Reminds you at the right time — not just on a timer.</p>
+              </div>
+
+              <div class="blz-app-card blz-glow-blue" data-category="ai">
+                <svg
+                  class="blz-icon-styles"
+                  style="
+                    stroke: #0099ff;
+                    filter: drop-shadow(0 0 4px rgba(0, 153, 255, 0.4));
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C12 2 5 9 5 14a7 7 0 0014 0c0-5-7-12-7-12z" />
+                </svg>
+                <h3>Hydration Coach</h3>
+                <p>
+                  Learns your habits. Adjusts your hydration plan in real-time.
+                </p>
+              </div>
+
+              <div class="blz-app-card blz-glow-orange" data-category="ai">
+                <svg
+                  class="blz-icon-styles"
+                  style="
+                    stroke: #ff8c00;
+                    filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.4));
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C12 2 7 7 7 12a5 5 0 0010 0c0-5-5-10-5-10z" />
+                </svg>
+                <h3>Liquid Calorie Detector</h3>
+                <p>Knows if it’s water, a shake, or Gatorade — and adapts.</p>
+              </div>
+
+              <div class="blz-app-card blz-glow-sky" data-category="ai">
+                <svg
+                  class="blz-icon-styles"
+                  style="
+                    stroke: #66ccff;
+                    filter: drop-shadow(0 0 4px rgba(102, 204, 255, 0.4));
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="9" y="2" width="6" height="12" rx="3" />
+                  <path d="M5 10v2a7 7 0 0014 0v-2" />
+                  <path d="M12 18v4" />
+                  <path d="M8 22h8" />
+                </svg>
+                <h3>Blaze Voice Assistant</h3>
+                <p>
+                  Say “Sterilize bottle” or “How much did I drink?” — Blaze
+                  listens.
+                </p>
+              </div>
+              <!-- Hydration Goal Setter -->
+              <div class="blz-app-card blz-glow-orange" data-category="core">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 2v20M4 12h16" />
+                </svg>
+                <h3>Hydration Goal Setter</h3>
+                <p>
+                  Set your daily water target manually or sync with your fitness
+                  goals.
+                </p>
+              </div>
+
+              <!-- Reminder Schedule -->
+              <div class="blz-app-card blz-glow-green" data-category="core">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l3 3" />
+                </svg>
+                <h3>Reminder Schedule</h3>
+                <p>
+                  Customize hydration reminder intervals — fully in your
+                  control.
+                </p>
+              </div>
+
+              <!-- Water Capacity Monitor -->
+              <div class="blz-app-card blz-glow-gold" data-category="core">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <rect x="6" y="2" width="12" height="20" rx="6" />
+                  <path d="M12 6v6" />
+                </svg>
+                <h3>Water Capacity Monitor</h3>
+                <p>
+                  Tracks remaining liquid in the bottle using internal sensors.
+                </p>
+              </div>
+
+              <div class="blz-app-card blz-glow-blue" id="blz-water-tracker-card" data-category="device">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 4h16v16H4z" />
+                  <path d="M4 10h16" />
+                </svg>
+                <h3>Water Consumption Tracker</h3>
+                <p>
+                  See how much you’ve consumed today, this week, or all-time.
+                </p>
+              </div>
+
+              <!-- Liquid Temperature -->
+              <div
+                id="blz-temp-card"
+                class="blz-app-card blz-glow-teal"
+                data-category="device"
+              >
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 2v14" />
+                  <path d="M9 12a3 3 0 106 0" />
+                  <circle cx="12" cy="18" r="4" />
+                </svg>
+                <h3>Liquid Temperature</h3>
+                <p>
+                  Get real-time temperature updates of the drink inside your
+                  bottle.
+                </p>
+              </div>
+
+              <!-- UV Sterilization -->
+              <div class="blz-app-card blz-glow-purple" data-category="device">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 2v4M12 18v4M4 12h4M16 12h4" />
+                  <circle cx="12" cy="12" r="3.5" />
+                </svg>
+                <h3>UV Sterilization</h3>
+                <p>
+                  Kill 99.99% of germs in your tumbler using UV-C light built
+                  into the lid.
+                </p>
+              </div>
+
+              <!-- Battery Level -->
+              <div class="blz-app-card blz-glow-grey" data-category="device">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <rect x="4" y="6" width="16" height="12" rx="2" />
+                  <path d="M22 10v4" />
+                </svg>
+                <h3>Battery Level</h3>
+                <p>
+                  Check how much juice is left and when it's time to recharge.
+                </p>
+              </div>
+
+              <!-- Settings -->
+              <div class="blz-app-card blz-glow-dark" data-category="device">
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33h.09A1.65 1.65 0 0011 3.1V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51h.09a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v.09a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
+                  />
+                </svg>
+                <h3>Settings</h3>
+                <p>
+                  Manage app preferences, feature toggles, and Blaze OS updates.
+                </p>
+              </div>
+
+              <div
+                class="blz-app-card blz-glow-future coming-soon"
+                data-category="soon"
+              >
+                <div class="blz-lock-badge">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="11" width="18" height="10" rx="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                </div>
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 8l1 12h14l1-12" />
+                  <path d="M9 13h6v4H9z" />
+                </svg>
+                <h3>Supplement Marketplace</h3>
+                <p>
+                  Discover electrolyte mixes + boosters tailored to your
+                  hydration needs.
+                </p>
+              </div>
+              <div
+                class="blz-app-card blz-glow-future coming-soon"
+                data-category="soon"
+              >
+                <div class="blz-lock-badge">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="11" width="18" height="10" rx="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                </div>
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l2.5 2.5" />
+                  <path d="M6 6l12 12" stroke-linecap="round" />
+                </svg>
+                <h3>Apple Health + Whoop</h3>
+                <p>
+                  Sync Blaze hydration stats with your fitness apps and recovery
+                  platform.
+                </p>
+              </div>
+
+              <div
+                class="blz-app-card blz-glow-future coming-soon"
+                data-category="soon"
+              >
+                <div class="blz-lock-badge">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="11" width="18" height="10" rx="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                </div>
+                <svg
+                  class="blz-card-icon"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 3v18" />
+                  <path d="M8 5v14" />
+                  <path d="M16 8v8" />
+                </svg>
+                <h3>Voice Hydration Coach</h3>
+                <p>
+                  Ask Blaze: “How hydrated am I?” or “Remind me every 3 hours.”
+                </p>
+              </div>
+            </div>
+
+            <!-- 🔘 Carousel Navigation Buttons (outside .track) -->
+            <button class="blz-carousel-prev">‹</button>
+            <button class="blz-carousel-next">›</button>
+          </div>
+        </div>
+        <!-- 🔬 Electrolyte AI Feature Screen -->
+        <div id="electrolyte-ai-screen" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <button id="electrolyte-back" class="blz-back-btn-electrolyte">
+              ←
+            </button>
+          </div>
+          <div class="electrolyte-header-glow">
+            <h1 class="electrolyte-headline">Electrolyte & Supplement AI</h1>
+            <p class="electrolyte-subheadline">
+              Personalized from your hydration + workout data
+            </p>
+          </div>
+
+          <!-- 🔁 3D Insight Stack -->
+          <div class="blz-insight-stack-container">
+            <div class="blz-insight-card electrolyte-active-card">
+              <div class="blz-insight-glow-bg"></div>
+              <h4>💧 Hydration Timing</h4>
+              <p>
+                Start sipping 20–30 minutes before your HIIT session. This
+                boosts absorption.
+              </p>
+            </div>
+            <div class="blz-insight-card">
+              <h4>⚡ Magnesium Support</h4>
+              <p>
+                Low levels detected. Supplement 200mg post-workout to reduce
+                muscle fatigue.
+              </p>
+            </div>
+            <div class="blz-insight-card">
+              <h4>🔥 Cramp Risk Detected</h4>
+              <p>
+                Boost sodium by 10% to compensate for heavy sweat loss under
+                current humidity.
+              </p>
+            </div>
+          </div>
+          <!-- 👤 Input Summary -->
+          <div class="blz-ai-summary">
+            <div><strong>Your Profile</strong></div>
+            <div>Weight: <strong>165 lbs</strong></div>
+            <div>Sport: <strong>HIIT</strong></div>
+            <div>Intensity: <strong>High</strong></div>
+            <div>Hydration: <strong>72%</strong></div>
+            <button class="blz-btn-edit-inputs">✏️ Edit Inputs</button>
+          </div>
+          <hr class="blz-divider" />
+
+          <!-- 📊 Comparison Toggle -->
+          <div class="blz-ai-compare">
+            <p class="compare-label">Supplement Reccomendation</p>
+            <div class="blz-compare-columns">
+              <div>
+                <strong>Blaze Blend</strong>
+                <ul>
+                  <li>+ BCAA</li>
+                  <li>+ Magnesium</li>
+                  <li>0g Sugar</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Standard Mix</strong>
+                <ul>
+                  <li>—</li>
+                  <li>—</li>
+                  <li>6g Sugar</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 🎯 Confidence Score -->
+          <div class="blz-ai-confidence">
+            AI Confidence: <strong>94%</strong>
+          </div>
+
+          <!-- 🌟 Action -->
+          <div class="wishlist-btn-wrapper">
+            <button class="wishlist-btn">★ Add to Wishlist</button>
+          </div>
+        </div>
+        <!-- 🔵 Hydration Coach Feature Screen -->
+        <div id="hydration-coach-screen" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <button id="hydration-back" class="blz-back-btn1">←</button>
+
+            <!-- Hero Section -->
+            <div class="hydration-hero-glow">
+              <h1 class="hydration-headline">Hydration Coach</h1>
+              <p class="hydration-subheadline">
+                Real-time adjustments based on your body + routine
+              </p>
+            </div>
+
+            <!-- Insight Card Stack -->
+            <div class="blz-insight-stackz hydration-stack">
+              <div class="blz-insight-cardz above">
+                🏃‍♂️ You logged a workout — hydration plan recalibrated
+              </div>
+              <div class="blz-insight-cardz active">
+                💧 You're 12oz behind pace. Sip now to avoid fatigue.
+              </div>
+              <div class="blz-insight-cardz below">
+                🌡️ Temperature spike detected — target increased by 10%
+              </div>
+            </div>
+            <div class="key-stats-wrapper">
+              <h2 class="blz-stats-heading">Key Stats</h2>
+              <div class="blz-ring-container">
+                <!-- Ring 1: Daily Progress -->
+                <div class="blz-progress-ring">
+                  <div class="ring-glow"></div>
+                  <svg viewBox="0 0 100 100" class="ring-svg">
+                    <circle class="ring-bg" cx="50" cy="50" r="45" />
+                    <circle
+                      class="ring-fg ring-fill-1"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                    />
+                    <text
+                      x="50%"
+                      y="50%"
+                      dominant-baseline="middle"
+                      text-anchor="middle"
+                      class="ring-text"
+                    >
+                      82%
+                    </text>
+                  </svg>
+                  <p class="ring-label">Today’s Progress</p>
+                </div>
+
+                <!-- Ring 2: Remaining Liquid -->
+                <div class="blz-progress-ring">
+                  <div class="ring-glow"></div>
+                  <svg viewBox="0 0 100 100" class="ring-svg">
+                    <circle class="ring-bg" cx="50" cy="50" r="45" />
+                    <circle
+                      class="ring-fg ring-fill-2"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                    />
+                    <text
+                      x="50%"
+                      y="50%"
+                      dominant-baseline="middle"
+                      text-anchor="middle"
+                      class="ring-text"
+                    >
+                      18oz
+                    </text>
+                  </svg>
+
+                  <p class="ring-label">Left in Bottle</p>
+                </div>
+              </div>
+
+              <!-- Optional AI Confidence Note -->
+              <div class="blz-ring-caption">
+                🧠 Blaze AI Confidence: <strong>91%</strong><br />
+                <span class="caption-subtext"
+                  >Updates hourly based on activity, weather, and routine.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-reminder-screen hidden" id="ai-reminder-screen">
+          <button id="ai-back-btn" class="back-arrow-btn">←</button>
+
+          <!-- Top Neural Pulse Orb -->
+          <div class="ai-orb-wrapper">
+            <div class="ai-orb-core">
+              <svg
+                class="ai-orb-icon"
+                style="
+                  stroke: #02653d;
+                  filter: drop-shadow(0 0 4px rgba(0, 255, 153, 0.4));
+                "
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <circle cx="12" cy="13" r="8" />
+                <path d="M12 9v4l3 3" />
+                <path d="M5 3l2 2" />
+                <path d="M19 3l-2 2" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Header -->
+          <h2 class="ai-title">Drinking Reminder</h2>
+          <p class="ai-subtext">
+            Stay hydrated without thinking. Blaze adapts to your needs.
+          </p>
+
+          <!-- Frequency Selector -->
+          <div class="scroll-wrapper">
+            <div class="scroll-horizontal-container">
+              <div class="scroll-track">
+                <div class="scroll-item">Every 1 hour</div>
+                <div class="scroll-item">Every 2 hours</div>
+                <div class="scroll-item">Every 3 hours</div>
+                <div class="scroll-item">Every 4 hours</div>
+                <div class="scroll-item">Adaptive</div>
+                <div class="scroll-item">Manual</div>
+              </div>
+              <div class="scroll-highlight-overlay"></div>
+            </div>
+          </div>
+
+          <!-- Insight Card -->
+          <div class="blz-insight-stack-reminder">
+            <div class="blz-insight-card-reminder above">
+              💡 You’ve missed 1 reminder today. Blaze will nudge more
+              frequently for the next 3 hours.
+            </div>
+            <div class="blz-insight-card-reminder active">
+              💡 You’ve been consistent with your hydration for 3 days in a row.
+              Congratulations
+            </div>
+            <div class="blz-insight-card-reminder below">
+              💡 Adaptive mode is now fine-tuned for your hydration habits.
+            </div>
+          </div>
+
+          <button class="ai-voice-btn">🎙️ Set by voice</button>
+
+          <!-- Buttons -->
+          <div class="reminder-buttons">
+            <button class="start-btn">⏯ Start Session</button>
+            <button class="reset-btn">🔁 Reset</button>
+          </div>
+        </div>
+        <!-- 💧 Blaze OS: Hydration Goal Setter - Step 1 -->
+        <div id="hydration-goal-screen" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <!-- Navigation Bar -->
+            <div class="blz-nav-bar">
+              <button id="goal-back-btn" class="blz-back-btn">←</button>
+            </div>
+
+            <!-- AI Prompt -->
+            <!-- Neural Glow Orb (Blaze Orange) -->
+            <div class="goal-orb-wrapper">
+              <div class="goal-orb-glow"></div>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FF8000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="100"
+                height="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="12" cy="12" r="1" />
+              </svg>
+            </div>
+            <div class="blz-goal-header">
+              <h1 class="blz-goal-title">Hydration Goal Setter</h1>
+              <p class="blz-goal-subtext">Step 1 - Select Your Weight</p>
+            </div>
+
+            <!-- Weight Input Scroll Selector -->
+            <!-- Weight Scroll Section -->
+            <div class="scroll-wrapper-weight">
+              <div class="scroll-horizontal-container-weight">
+                <div class="scroll-track-weight">
+                  <!-- JavaScript will fill this -->
+                </div>
+                <div class="scroll-highlight-overlay"></div>
+              </div>
+            </div>
+
+            <!-- Continue Button -->
+            <button id="goal-continue-btn" class="blz-primary-btn">
+              Continue
+            </button>
+          </div>
+        </div>
+
+        <!-- 💧 Blaze OS: Hydration Goal Setter - Step 2 -->
+        <div id="hydration-goal-step2" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <!-- Navigation Bar -->
+            <div class="blz-nav-bar">
+              <button id="goal-back-step2" class="blz-back-btn">←</button>
+            </div>
+            <div class="goal-orb-wrapper">
+              <div class="goal-orb-glow"></div>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FF8000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="100"
+                height="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="12" cy="12" r="1" />
+              </svg>
+            </div>
+
+            <!-- AI Prompt -->
+            <div class="blz-goal-header">
+              <h1 class="blz-goal-title">Hydration Goal Setter</h1>
+              <p class="blz-goal-subtext">Step 2 - Choose Your Sport</p>
+            </div>
+
+            <!-- Sport Selection Pills -->
+            <div class="blz-sport-selector">
+              <div class="blz-sport-scroll">
+                <button class="sport-pill" data-sport="HIIT">HIIT</button>
+                <button class="sport-pill" data-sport="Running">Running</button>
+                <button class="sport-pill" data-sport="Weightlifting">
+                  Weightlifting
+                </button>
+                <button class="sport-pill" data-sport="Cycling">Cycling</button>
+                <button class="sport-pill" data-sport="Swimming">
+                  Swimming
+                </button>
+                <button class="sport-pill" data-sport="Yoga">Yoga</button>
+              </div>
+            </div>
+
+            <!-- Continue Button -->
+            <button id="goal-finish-btn" class="blz-primary-btn">
+              See Recommendation
+            </button>
+          </div>
+        </div>
+        <!-- 💧 Hydration Goal Summary Screen - Step 3 -->
+        <div id="hydration-goal-summary" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <!-- Navigation -->
+            <div class="blz-nav-bar">
+              <button id="goal-summary-back-btn" class="blz-back-btn">←</button>
+            </div>
+
+            <!-- Header -->
+            <div class="blz-goal-result-panel">
+              <div class="blz-goal-circle">
+                <div class="blz-goal-amount">128 oz</div>
+                <div class="blz-goal-label">Daily Target</div>
+              </div>
+              <div class="blz-goal-header">
+                <h1 class="blz-goal-title">Your Personalized Goal</h1>
+              </div>
+
+              <!-- Result Panel -->
+              <div class="blz-goal-stats">
+                <div><strong>Weight:</strong> 165 lbs</div>
+                <div><strong>Sport:</strong> HIIT</div>
+                <div><strong>Intensity:</strong> High</div>
+                <div><strong>Weather:</strong> 84°F (Humid)</div>
+              </div>
+            </div>
+
+            <!-- AI Insight -->
+            <div class="blz-goal-ai-insight">
+              💡 <em>Blaze AI:</em> Based on your sweat rate and activity
+              pattern, your hydration demand increased by 15%.
+            </div>
+
+            <!-- CTA -->
+            <div class="blz-goal-summary-cta">
+              <button class="blz-primary-btn" id="goal-start-btn">
+                Start Hydration Plan
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 🌡️ Temperature Screen -->
+        <div id="blz-temp-screen" class="blz-screen hidden">
+          <button id="blz-temp-back" class="blz-temp-back-btn">←</button>
+            
+            <div class="blz-thermometer">
+              <div class="blz-thermo-glow"></div>
+              <div class="blz-thermo-stem"></div>
+              <div class="blz-thermo-bulb"></div>
+            </div>
+            
+            <div class="blz-temp-header">
+              
+              <h2 class="blz-temp-title">Liquid Temperature</h2>
+            </div>
+            
+
+            <!-- Temperature Readout -->
+            <div class="blz-temp-reading">
+              <h1 id="blz-temp-value">72°C</h1>
+            </div>
+
+
+            <!-- AI Tip -->
+            <div class="blz-temp-ai-tip">
+              <h3>AI Hydration Tip</h3>
+              <p>
+                72°C is above your optimal range. Let your drink cool to ~17°C
+                for post-workout recovery.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔬 Liquid Calorie Detector Feature Screen -->
+        <div id="liquid-calorie-screen" class="blz-feature-screen hidden">
+          <div class="blz-ai-wrapper">
+            <button id="liquid-back-btn" class="blz-back-btn-liquid">←</button>
+            <div class="liquid-hero-glow">
+              <h1 class="liquid-headline">Liquid Calorie<br />Detector</h1>
+              <p class="liquid-subheadline">
+                Knows if it's water, a shake, or Gatorade<br />— and adapts.
+              </p>
+            </div>
+
+            <!-- 🔵 Animated Orb -->
+            <div class="liquid-orb-wrapper">
+              <div class="liquid-orb-core">
+                <div class="liquid-kcal-core">
+                  <div class="liquid-kcal-number" id="kcal-number">--</div>
+                  <div class="liquid-kcal-label">kcal</div>
+                </div>
+
+                <div class="liquid-scan-ring">
+                  <div class="scan-particle"></div>
+                  <div class="scan-particle delay1"></div>
+                  <div class="scan-particle delay2"></div>
+                  <div class="scan-particle delay3"></div>
+                  <div class="scan-particle delay4"></div>
+                  <div class="liquid-scan-sweep"></div>
+                  <div class="scanning-pulse"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 🔍 Result Panel -->
+            <div class="liquid-result-panel">
+              <div class="liquid-result-line">
+                <span>Detected:</span> <strong id="liquid-type">—</strong>
+              </div>
+              <div class="liquid-result-line">
+                <span>Calories:</span>
+                <strong id="liquid-calories">— kcal</strong>
+              </div>
+              <div class="liquid-result-line">
+                <span>AI Confidence:</span>
+                <strong id="liquid-confidence">—%</strong>
+              </div>
+            </div>
+
+            <!-- 🎯 CTA Buttons -->
+            <div class="liquid-btn-row">
+              <button class="liquid-btn liquid-rescan-btn">🔄 Rescan</button>
+              <button class="liquid-btn liquid-nutrition-btn">
+                🎙️ Set Nutrition Goal
+              </button>
+            </div>
+
+            <!-- 💡 AI Cards -->
+            <h1 class="liquid-headline-ai">Blaze AI Insights</h1>
+            <div class="liquid-ai-card-stack" id="liquid-insight-stack">
+              <div class="liquid-ai-card">
+                🧪 Adjusting glucose thresholds based on post-shake insulin
+                response
+              </div>
+              <div class="liquid-ai-card">
+                ⚠️ Detected high-calorie liquid — adjusting hydration plan
+              </div>
+              <div class="liquid-ai-card">
+                🍬 Reduce post-workout sugar by 8g for better electrolyte
+                absorption
+              </div>
+              <div class="liquid-ai-card">
+                💧 No additives found — hydration index optimal (HI: 92%)
+              </div>
+              <div class="liquid-ai-card">
+                🧠 AI predicts 18% longer recovery if Gatorade is replaced with
+                water
+              </div>
+              <div class="liquid-ai-card">
+                ⚙️ Electrolyte balance adjusted: +12% sodium compensation
+                triggered
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: blaze-screen-container -->
+    </div>
+    <!-- END: blaze-os-wrapper -->
+
+    <!-- 🔌 JS Scripts -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+import './script.js';
+import './home.js';
+import './voice.js';
+import './uv.js';
+import './features.js';
+import './electrolyte.js';
+import './hydration.js';
+import './reminder.js';
+import './liquid.js';
+import './schedule.js';
+import './uvuv.js';
+import './goal.js';
+import './temp.js';
+import './homenew.js';

@@ -1,0 +1,481 @@
+/* 🔹 Blaze Apps Screen */
+.blz-apps-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: #0b0b0b;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: none;
+  }
+  
+  .blz-apps-screen.visible {
+    display: block;
+  }
+  
+  .blz-apps-screen.hidden {
+    display: none;
+  }
+  
+  /* 🔹 Category Title */
+  .blz-category-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* 🔹 Tab Navigation */
+  .blz-tab-bar {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0 12px;
+    margin-top: 25px;
+    margin-bottom: -15px;
+    z-index: 10;
+    transform: translateX(20px);
+  }
+  .blz-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px 30px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: white;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(6px);
+    line-height: 1;
+    height: 28px; /* 👈 force consistent height */
+    overflow: hidden; /* 👈 prevents weird SVG overflow */
+    z-index: 10;
+  }
+  
+  .blz-tab-label {
+    margin-top: 2px; /* nudges it downward */
+    display: inline-block;
+  }
+  
+  .blz-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  .blz-tab.active {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(77, 166, 255, 0.4);
+    border-color: rgba(77, 166, 255, 0.3);
+  }
+  
+  .blz-icon-style {
+    width: 20px !important;
+    height: 20px !important;
+    stroke: currentColor;
+    transition: stroke 0.2s ease, transform 0.2s ease;
+    display: block;
+    margin-top: 0px;
+  }
+  
+  .blz-tab:hover .blz-icon-style {
+    stroke: #4da6ff; /* Adjust to match your glow color */
+    transform: scale(1.05);
+  }
+  
+  .blz-tab.active .blz-icon-style {
+    stroke: #4da6ff; /* Active state color */
+  }
+  
+  /* Default: All tab icons appear grey */
+  /* Default (inactive) */
+  .blz-icon-style {
+    width: 14px;
+    height: 14px;
+    stroke: #888;
+    transition: stroke 0.2s ease;
+  }
+  
+  /* 🔮 AI = Purple */
+  .tab-ai:hover .blz-icon-style,
+  .tab-ai.active .blz-icon-style {
+    stroke: #bb88ff;
+  }
+  
+  /* 🟧 Core = Orange */
+  .tab-core:hover .blz-icon-style,
+  .tab-core.active .blz-icon-style {
+    stroke: #ffaa44;
+  }
+  
+  /* 🔵 Device = Blue */
+  .tab-device:hover .blz-icon-style,
+  .tab-device.active .blz-icon-style {
+    stroke: #4da6ff;
+  }
+  
+  /* 🟡 Soon = Yellow */
+  .tab-soon:hover .blz-icon-style,
+  .tab-soon.active .blz-icon-style {
+    stroke: #fdd835;
+  }
+  
+  /* 🔹 Carousel Layout */
+  .blz-carousel-container {
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    overflow: hidden;
+    display: flex;
+    padding: -38px 0;
+    justify-content: center;
+    top: -3%;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .blz-carousel-track {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    z-index: 1;
+  }
+  
+  /* 🔹 App Cards */
+  .blz-app-card {
+    position: absolute;
+    width: 180px;
+    padding: 24px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+    color: white;
+    z-index: 1;
+  }
+  
+  .blz-app-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .blz-app-card p {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .blz-app-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+  
+  /* 🔹 Carousel Nav Buttons */
+  .blz-carousel-prev,
+  .blz-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .blz-carousel-prev {
+    left: 20px;
+  }
+  .blz-carousel-next {
+    right: 20px;
+  }
+  
+  /* 🔹 Glow Effects */
+  .blz-glow-gold {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+  }
+  .blz-glow-blue {
+    box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+  }
+  .blz-glow-green {
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
+  }
+  .blz-glow-orange {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+  }
+  .blz-glow-sky {
+    box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+  }
+  .blz-glow-purple {
+    box-shadow: 0 0 20px rgba(170, 102, 255, 0.5);
+  }
+  
+  .blz-app-card {
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.3s ease;
+  }
+  
+  .blz-app-card:not([style*="opacity: 1"]) {
+    filter: blur(1px);
+  }
+  
+  @keyframes blzGlowGold {
+    0% {
+      box-shadow: 0 0 14px rgba(255, 204, 0, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(255, 204, 0, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(255, 204, 0, 0.23);
+    }
+  }
+  
+  @keyframes blzGlowBlue {
+    0% {
+      box-shadow: 0 0 14px rgba(0, 153, 255, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(0, 153, 255, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(0, 153, 255, 0.23);
+    }
+  }
+  
+  @keyframes blzGlowGreen {
+    0% {
+      box-shadow: 0 0 14px rgba(0, 255, 153, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(0, 255, 153, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(0, 255, 153, 0.23);
+    }
+  }
+  
+  @keyframes blzGlowOrange {
+    0% {
+      box-shadow: 0 0 14px rgba(255, 140, 0, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(255, 140, 0, 0.23);
+    }
+  }
+  
+  @keyframes blzGlowSky {
+    0% {
+      box-shadow: 0 0 14px rgba(102, 204, 255, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(102, 204, 255, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(102, 204, 255, 0.23);
+    }
+  }
+  
+  @keyframes blzGlowPurple {
+    0% {
+      box-shadow: 0 0 14px rgba(170, 102, 255, 0.23);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(170, 102, 255, 0.46);
+    }
+    100% {
+      box-shadow: 0 0 14px rgba(170, 102, 255, 0.23);
+    }
+  }
+  
+  .blz-app-card.glow-active.blz-glow-gold {
+    animation: blzGlowGold 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-app-card.glow-active.blz-glow-blue {
+    animation: blzGlowBlue 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-app-card.glow-active.blz-glow-green {
+    animation: blzGlowGreen 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-app-card.glow-active.blz-glow-orange {
+    animation: blzGlowOrange 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-app-card.glow-active.blz-glow-sky {
+    animation: blzGlowSky 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-app-card.glow-active.blz-glow-purple {
+    animation: blzGlowPurple 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .blz-icon-styles {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    stroke-width: 2;
+    fill: none;
+    overflow: visible;
+  }
+  
+  .blz-glow-gold {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  .blz-card-icon {
+    width: 40px;
+    height: 40px;
+    stroke: currentColor;
+    margin-bottom: 12px;
+  }
+  
+  .blz-glow-blue {
+    box-shadow: 0 0 20px rgba(77, 166, 255, 0.5);
+  }
+  .blz-glow-teal {
+    box-shadow: 0 0 20px rgba(0, 255, 221, 0.4);
+  }
+  .blz-glow-grey {
+    box-shadow: 0 0 20px rgba(200, 200, 200, 0.2);
+  }
+  .blz-glow-dark {
+    box-shadow: 0 0 20px rgba(120, 120, 120, 0.3);
+  }
+  
+  .blz-glow-future {
+    box-shadow: 0 0 20px rgba(120, 160, 255, 0.25);
+    border: 1px solid rgba(180, 200, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  /* 🔒 Lock badge overlay */
+  /* ✨ Lock pulse animation */
+  @keyframes blzLockPulse {
+    0% {
+      box-shadow: 0 0 0px rgba(255, 204, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 0px rgba(255, 204, 0, 0.4);
+    }
+  }
+  
+  /* 🔐 Style + animate the lock badge */
+  .blz-lock-badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    pointer-events: none;
+    animation: blzLockPulse 2s infinite ease-in-out;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 3px;
+  }
+  
+  .blz-lock-badge svg {
+    stroke: gold;
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* 🧊 Disabled card state */
+  .coming-soon {
+    opacity: 0.5;
+    transform: scale(0.95);
+    pointer-events: none;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+  
+  .coming-soon:hover {
+    transform: scale(0.95);
+  }
+  
+  /* 👁 Optional: make headings slightly dimmer too */
+  .coming-soon h3,
+  .coming-soon p {
+    color: #aaa;
+  }
+  
+  .blz-back-btn {
+    position: absolute;
+    pointer pointer-events: auto;
+    top: 24px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1;
+  }
+  
+  .blz-back-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+  }
+  
+  .blz-back-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: white;
+  }
+  .blz-back-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .blz-back-container {
+    position: absolute;
+    top: 15px;
+    left: 1px;
+    z-index: 999;
+  }
+  
+  .back-to-home-btn {
+    z-index: 999;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  

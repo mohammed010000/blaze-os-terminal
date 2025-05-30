@@ -1,0 +1,280 @@
+.liquid-headline {
+  font-size: 24px; /* Adjust size */
+  font-weight: 700;
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+  transform: translateX(0px); /* optional: shift headline right */
+}
+
+.liquid-subheadline {
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 10px;
+  transform: translateX(0px); /* optional: shift subheadline right */
+}
+
+.liquid-orb-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 60px auto;
+  margin-right: 50px;
+  transform: translateY(-30px); /* Shift to the right */
+}
+
+.liquid-scan-ring {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.06) 60%,
+    transparent 75%
+  );
+  box-shadow: 0 0 24px rgba(255, 140, 0, 0.15), 0 0 60px rgba(255, 140, 0, 0.1);
+  overflow: hidden;
+}
+
+.liquid-scan-sweep {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 140, 0, 0) 0deg,
+    rgba(255, 140, 0, 0.15) 60deg,
+    rgba(255, 140, 0, 0) 180deg
+  );
+  animation: liquidSweep 4s linear infinite;
+}
+
+@keyframes liquidSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.liquid-scan-sweep {
+  animation: liquidSweep 3.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.liquid-orb-core {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #1a1a1a, #000);
+  box-shadow: inset 0 0 30px rgba(255, 140, 0, 0.2),
+    0 0 60px rgba(255, 140, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.liquid-scan-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: rotateRing 4s linear infinite;
+}
+
+.scan-particle.delay1 {
+  animation-delay: 0.3s;
+}
+.scan-particle.delay2 {
+  animation-delay: 0.6s;
+}
+.scan-particle.delay3 {
+  animation-delay: 0.9s;
+}
+.scan-particle.delay4 {
+  animation-delay: 1.2s;
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.blz-back-btn-liquid {
+  position: absolute;
+  top: 50px;
+  left: 24px;
+  background: rgba(255, 165, 0, 0.08); /* soft orange background */
+  color: #ff9900; /* golden-orange stroke */
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
+  transition: background 0.3s ease;
+}
+
+.blz-back-btn-liquid:hover {
+  background: rgba(255, 165, 0, 0.15);
+}
+
+.liquid-result-panel {
+  margin-top: -50px;
+  background: rgba(255, 140, 0, 0.05);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  padding: 20px;
+  border-radius: 14px;
+  max-width: 380px;
+  width: 90%;
+  margin-inline: auto;
+  box-shadow: 0 0 16px rgba(255, 140, 0, 0.2);
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.liquid-result-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.liquid-cta-buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.liquid-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.liquid-btn {
+  padding: 10px 16px;
+  font-size: 13px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.liquid-rescan-btn {
+  background: #ff9900;
+  color: #000;
+}
+
+.liquid-nutrition-btn {
+  background: #1c1c1c;
+  color: #fff;
+  border: 1px solid rgba(255, 153, 0, 0.4);
+  box-shadow: 0 0 12px rgba(255, 153, 0, 0.1);
+}
+
+.liquid-ai-card-stack {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  margin-top: 24px;
+  padding-left: 16px;
+}
+
+.liquid-ai-card-stack::-webkit-scrollbar {
+  display: none;
+  top: 50px;
+}
+
+.liquid-ai-card {
+  flex: 0 0 80%;
+  background: rgba(255, 140, 0, 0.07);
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  padding: 16px 20px;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 0 16px rgba(255, 140, 0, 0.12);
+  scroll-snap-align: start;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
+}
+
+.liquid-ai-card:active {
+  transform: scale(1.03);
+  box-shadow: 0 0 24px rgba(255, 140, 0, 0.25);
+}
+
+.liquid-headline-ai {
+  font-size: 24px; /* Adjust size */
+  font-weight: 700;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: -40px;
+  text-align: center;
+  transform: translateX(0px); /* optional: shift headline right */
+}
+
+.liquid-kcal-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  height: 120px;
+}
+
+.liquid-kcal-number {
+  font-size: 28px;
+  margin-top: -6px;
+  margin-bottom: 6px;
+  color: #ffaa00;
+  animation: pulseKcal 1.5s infinite ease-in-out;
+}
+
+.liquid-kcal-label {
+  margin-top: -6px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+@keyframes pulseKcal {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,306 @@
+#hydration-goal-screen {
+  padding: 2rem;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+.blz-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.blz-goal-header {
+  text-align: center;
+  margin-bottom: 1.7rem;
+  margin-top: -30px;
+}
+.blz-goal-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.blz-goal-subtext {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.blz-weight-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.blz-input-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.blz-weight-scroll select {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+.blz-primary-btn {
+  background: linear-gradient(
+    to right,
+    #ff9500,
+    #e67300
+  ); /* Blaze orange gradient */
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 149, 0, 0.4); /* Orange glow */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.blz-primary-btn:hover {
+  background: linear-gradient(
+    to right,
+    #ffa733,
+    #ff6a00
+  ); /* Lighter orange on hover */
+  box-shadow: 0 0 16px rgba(255, 165, 0, 0.6); /* Stronger glow on hover */
+}
+
+.blz-sport-selector {
+  text-align: center;
+  margin-top: -70px;
+  margin-bottom: -20px;
+}
+.blz-sport-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* 🎯 Sport Pill Base Style */
+.sport-pill {
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: #141414;
+  border: 1px solid #ff9900;
+  color: #ccc;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+  box-shadow: 0 0 4px rgba(255, 153, 0, 0.2);
+}
+
+/* 🔥 On Hover */
+.sport-pill:hover {
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+}
+
+/* ✅ Selected Style */
+.sport-pill.selected {
+  background: #ff9900;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 18px rgba(255, 153, 0, 0.6);
+  border: 1px solid #ff9900;
+}
+
+/* === Hydration Goal Summary Screen === */
+#hydration-goal-summary {
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.blz-goal-result-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+.blz-goal-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ffaa00, #ff7f00);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
+  margin-bottom: 1.5rem;
+  animation: pulseGoal 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGoal {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
+  }
+}
+
+.blz-goal-amount {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.blz-goal-label {
+  font-size: 0.6rem;
+  opacity: 0.9;
+}
+
+.blz-goal-stats {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: rgba(255, 170, 0, 0.08);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: inset 0 0 6px rgba(255, 170, 0, 0.1),
+    0 0 20px rgba(255, 140, 0, 0.25), 0 0 40px rgba(255, 140, 0, 0.15);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.blz-goal-ai-insight {
+  background: rgba(255, 140, 0, 0.06); /* subtle orange-tinted background */
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #ff8c00; /* vivid orange border */
+  font-style: italic;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  max-width: 360px;
+  margin: 0 auto 2rem;
+  box-shadow: 0 0 12px rgba(255, 140, 0, 0.25); /* soft orange glow */
+  transition: box-shadow 0.3s ease;
+}
+
+.blz-goal-summary-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+}
+
+.goal-orb-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0 2rem 0;
+  position: relative;
+  margin-top: -10px;
+  scale: 1.2;
+}
+
+.goal-orb-glow {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.4),
+    rgba(255, 140, 0, 0.1)
+  );
+  filter: blur(12px);
+  position: absolute;
+  z-index: 1;
+  animation: pulseGlow123 2s ease-in-out infinite;
+}
+
+.goal-orb-icon {
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes pulseGlow123 {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+/* Scroll Wrapper */
+.scroll-wrapper-weight {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 16px;
+  overflow: visible;
+  margin-top: -50px;
+}
+
+.scroll-horizontal-container-weight {
+  display: flex;
+  justify-content: center;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding-bottom: 1rem;
+}
+
+.scroll-track-weight {
+  display: flex;
+  gap: 16px;
+  padding: 0 20px; /* ⬅️ This ensures space on both sides */
+  margin-right: 30px;
+}
+
+.scroll-item-weight {
+  flex: 0 0 auto;
+  padding: 0.6rem 1.4rem;
+  background: #111;
+  color: white;
+  border: 2px solid orange;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.6;
+  transform: scale(0.9);
+  scroll-snap-align: center;
+  transition: all 0.25s ease;
+}
+
+.scroll-item-weight.active {
+  transform: scale(1.15);
+  background-color: #ffa500; /* Blaze orange */
+  color: black;
+  font-weight: bold;
+  opacity: 1;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+  z-index: 2;
+}
+
+.scroll-highlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 120px;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}

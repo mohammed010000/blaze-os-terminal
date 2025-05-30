@@ -1,0 +1,345 @@
+.blz-feature-screen {
+  position: absolute;
+  inset: 0;
+  background: #0b0b0b;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 40px 24px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.blz-ai-wrapper {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.electrolyte-headline {
+  font-size: 26px;
+  font-weight: 800;
+  margin-top: -4px;
+  color: white;
+  padding: -12px 20px;
+  display: inline-block;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.electrolyte-subheadline {
+  font-size: 14px;
+  font-weight: 400;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.blz-ai-summary {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.blz-btn-edit-inputs {
+  margin-top: 12px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.blz-ai-recommendation {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 20px;
+  border-radius: 16px;
+  border-left: 4px solid gold;
+}
+
+.blz-ai-recommendation h3 {
+  margin-bottom: 10px;
+  color: #ffcc00;
+}
+
+.blz-ai-recommendation ul {
+  list-style: none;
+  padding: 0;
+  line-height: 1.7;
+}
+
+.blz-ai-reasoning {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  font-style: italic;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.blz-ai-compare {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 25px;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 200, 0, 0.08),
+    rgba(255, 200, 0, 0)
+  );
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.15);
+}
+
+.blz-compare-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.blz-compare-columns ul {
+  padding: 0;
+  list-style: none;
+  line-height: 1.6;
+}
+
+.blz-ai-env {
+  font-size: 13px;
+  margin-top: 15px;
+  color: #66ccff;
+  background: rgba(0, 153, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.blz-ai-confidence {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 20px;
+}
+
+.blz-ai-wishlist {
+  background: gold;
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  right: 20px;
+}
+
+.blz-back-btn {
+  position: absolute;
+  top: 36px;
+  left: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.blz-insight-stack-container {
+  perspective: 1200px;
+  margin-top: 40px;
+  position: relative;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blz-insight-card {
+  position: absolute;
+  width: 85%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.2);
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0.95) translateY(40px);
+  z-index: 1;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.blz-insight-card.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: none;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.blz-insight-card.active {
+  box-shadow: 0 0 16px rgba(255, 200, 0, 0.4), 0 0 32px rgba(255, 200, 0, 0.2);
+  animation: pulseGlow12 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow12 {
+  0% {
+    box-shadow: 0 0 12px rgba(255, 200, 0, 0.1),
+      0 0 18px rgba(255, 200, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 200, 0, 0.3),
+      0 0 30px rgba(255, 200, 0, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(255, 200, 0, 0.1),
+      0 0 18px rgba(255, 200, 0, 0.15);
+  }
+}
+
+.blz-insight-card.above {
+  transform: translateY(-35px) scale(0.93);
+  opacity: 0.4;
+  filter: blur(2.5px);
+  z-index: 0;
+}
+
+.blz-insight-card.below {
+  transform: translateY(35px) scale(0.93);
+  opacity: 0.4;
+  filter: blur(2.5px);
+  z-index: 0;
+}
+
+.blz-insight-card.above::before,
+.blz-insight-card.below::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.04); /* faint ambient edge */
+}
+
+.blz-insight-card h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #ffcc00;
+}
+
+.blz-insight-card p {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+/* Make the scrollbar track transparent */
+::-webkit-scrollbar {
+  height: 4px; /* adjust as needed */
+  width: 7px;
+  margin-top: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Optional: style the thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* subtle white thumb */
+  border-radius: 5px;
+}
+
+.blz-insight-glow-bg {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 260px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 80%
+  );
+  filter: blur(24px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blz-divider {
+  border: none;
+  height: 2px;
+  margin: 40px auto;
+  width: 70%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 204, 0, 0.2),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.1);
+}
+
+.wishlist-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.wishlist-btn {
+  background-color: #ffd700;
+  color: black;
+  font-weight: 600;
+  padding: 12px 37px;
+  border: none;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.05);
+}
+
+.electrolyte-active-card {
+  background: #111;
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 0 24px #ffcc0080,
+    /* outer glow */ 0 0 12px rgba(255, 204, 0, 0.3); /* subtle blur */
+  border: 1px solid rgba(255, 204, 0, 0.25);
+}
+
+.blz-back-btn-electrolyte {
+  position: absolute;
+  top: 50px;
+  left: 24px;
+  background: rgba(255, 165, 0, 0.08); /* soft orange background */
+  color: #ffcc0080; /* golden-orange stroke */
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+  transition: background 0.3s ease;
+}
+
+.blz-back-btn-electrolyte:hover {
+  background: rgba(255, 165, 0, 0.15);
+}

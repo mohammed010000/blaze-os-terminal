@@ -1,0 +1,287 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+.blaze-os-wrapper {
+  width: 350px;
+  height: 418px;
+  background: #0e0e0e;
+  border-radius: 30px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+
+.boot-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: bootFadeOut 4s ease forwards;
+}
+
+.boot-logo {
+  position: absolute;
+  width: 120px;
+  opacity: 0;
+  transform: scale(0.96);
+  filter: drop-shadow(0 0 8px white);
+  animation: fadeLogoInOut 4s ease both;
+}
+
+@keyframes fadeLogoInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes bootFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    display: none;
+  }
+}
+
+.voice-module-screen {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0e0e0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: white;
+  transition: opacity 0.5s ease;
+}
+
+.orb-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform: translateY(-40px);
+}
+
+.orb {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle at center,
+    #114477 0%,
+    #226699 40%,
+    #3a87c6 70%,
+    #5ab2f5 100%
+  );
+  border-radius: 50%;
+  box-shadow: inset 0 0 8px rgba(68, 170, 255, 0.25),
+    0 0 18px rgba(68, 170, 255, 0.4);
+  animation: orbPulse 2s infinite ease-in-out;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orb:active {
+  transform: scale(1.1);
+  box-shadow: 0 0 48px rgba(68, 170, 255, 0.8);
+}
+
+@keyframes orbPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(68, 170, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 32px rgba(68, 170, 255, 0.6);
+  }
+}
+
+.orb-icon {
+  width: 55px;
+  height: 55px;
+  z-index: 3;
+  opacity: 0.95;
+  filter: brightness(1) contrast(1) drop-shadow(0 0 4px rgba(68, 170, 255, 0.5));
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    filter: brightness(1) contrast(1)
+      drop-shadow(0 0 4px rgba(68, 170, 255, 0.3));
+  }
+  50% {
+    filter: brightness(1.1) contrast(1.2)
+      drop-shadow(0 0 8px rgba(68, 170, 255, 0.6));
+  }
+  100% {
+    filter: brightness(1) contrast(1)
+      drop-shadow(0 0 4px rgba(68, 170, 255, 0.3));
+  }
+}
+
+.flicker {
+  animation: flickerFade 3s ease-in-out infinite;
+}
+
+@keyframes flickerFade {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.orb-glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 20%,
+    rgba(255, 255, 255, 0.05) 80%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.orb-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(68, 170, 255, 0.8);
+  opacity: 0;
+  animation: wavePulse 2.4s infinite ease-out;
+}
+
+.orb-wave1 {
+  animation-delay: 0s;
+}
+
+.orb-wave2 {
+  animation-delay: 1.2s;
+}
+
+@keyframes wavePulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+.voice-intro {
+  margin-bottom: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #dddddd;
+  text-align: center;
+  padding: 0 20px;
+  line-height: 1.4;
+  max-width: 260px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.voice-cta {
+  margin-top: 36px;
+  font-size: 12px;
+  color: #44aaff;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards, textGlowPulse 1.8s ease-in-out infinite,
+    ctaFadeLoop 2.6s ease-in-out infinite;
+  animation-delay: 1.4s;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes textGlowPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 4px rgba(68, 170, 255, 0.6),
+      0 0 6px rgba(68, 170, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 6px rgba(68, 170, 255, 0.85),
+      0 0 10px rgba(68, 170, 255, 0.65);
+  }
+}
+
+@keyframes ctaFadeLoop {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

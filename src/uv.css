@@ -1,0 +1,339 @@
+.uv-screen {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background: #0e0e0e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.5s ease;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.uv-screen.visible {
+  left: 0;
+}
+
+.uv-screen-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 12px;
+}
+
+.uv-icon {
+  width: 32px;
+  filter: drop-shadow(0 0 8px rgba(68, 170, 255, 0.4));
+}
+
+.uv-circle-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.uv-toggle {
+  font-size: 12px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uv-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.uv-toggle .slider {
+  width: 40px;
+  height: 20px;
+  background: #444;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(180, 100, 255, 0.3),
+    0 0 60px rgba(180, 100, 255, 0.15);
+}
+
+.uv-toggle .slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #a844ff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.uv-toggle input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.uv-initial-icon {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  cursor: pointer;
+  margin-bottom: 1px;
+  margin-left: 10px;
+  transform: translateY(0px);
+}
+.uv-initial-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.uv-headline {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e0ccff;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.uv-subtext {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.uv-svg-container {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uv-svg-core {
+  width: 150px;
+  height: 150px;
+  transition: opacity 0.3s ease;
+  margin-bottom: -40px;
+}
+
+.uv-svg-core.pulse {
+  animation: uvPulseRings 2.2s infinite ease-in-out;
+}
+
+@keyframes uvPulseRings {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+.uv-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #e0ccff;
+  z-index: 2; /* 🔥 CRITICAL */
+  pointer-events: none;
+}
+
+.uv-pulse-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: -180px;
+}
+
+.uv-svg-core {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 15px;
+}
+
+/* Default pulse ring styles */
+.uv-pulse-ring {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: -10px;
+  border: 2px solid rgba(180, 100, 255, 0.4);
+  box-shadow: 0 0 30px rgba(180, 100, 255, 0),
+    0 0 60px rgba(180, 100, 255, 0.017);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: uvWavePulseInit 2.4s ease-out infinite;
+  z-index: 0;
+}
+
+.uv-pulse-ring.wave1 {
+  animation-delay: 0s;
+}
+
+.uv-pulse-ring.wave2 {
+  animation-delay: 1.4s;
+}
+
+/* Initial passive pulse: scale 1 → 1.8 */
+@keyframes uvWavePulseInit {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+    border-color: rgba(200, 120, 255, 0.4);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+    border-color: rgba(200, 120, 255, 0);
+  }
+}
+
+/* Active pulse during sterilization: scale 1 → 2.2 */
+@keyframes uvWavePulseActive {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+    border-color: rgba(220, 150, 255, 0.6);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+    border-color: rgba(180, 100, 255, 0);
+  }
+}
+
+/* Optional: Customize check state */
+#uv-core-svg.check {
+  /* Optional: add scale or visual tweak */
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+.uv-svg-core {
+  z-index: 1;
+  position: relative;
+}
+.uv-svg-container {
+  position: relative;
+  width: 200px;
+  height: 200px; /* 👈 lock height so swapping elements doesn’t shift layout */
+}
+
+.uv-plus-text {
+  position: absolute;
+  top: 37%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  font-size: 32px; /* ← customize this */
+  font-weight: 500;
+  color: #e0ccff;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.uv-progress-text {
+  position: absolute;
+  top: 46%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  text-align: center;
+  font-weight: 400;
+  color: #e0ccff;
+  z-index: 2;
+}
+
+.uv-checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: bold;
+  color: #e0ccff;
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.uv-checkmark.hidden {
+  display: none;
+}
+
+.uv-checkmark {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.uv-checkmark.show {
+  transform: scale(1.2);
+  opacity: 1;
+  animation: checkBounce 0.6s ease forwards;
+}
+
+@keyframes checkBounce {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.uv-pulse-wrapper {
+  transition: opacity 0.3s ease;
+}
+.uv-plus-shimmer {
+  animation: shimmerGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes shimmerGlow {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+#back-to-home-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#back-to-home-btn:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 12px rgba(180, 100, 255, 0.1);
+}
