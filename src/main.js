@@ -11,4 +11,3 @@ import './schedule.js';
 import './uvuv.js';
 import './goal.js';
 import './temp.js';
-import './homenew.js';
